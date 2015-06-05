@@ -1,0 +1,15 @@
+<div class="panel">
+  <div class="panel-heading">
+    <h4 class="panel-title" ng-click='toggleCollapse()'>
+      {{traveler.name}}
+      <span class='toggle-btn pull-right'></span>
+    </h4>
+  </div>
+  <div class="panel-collapse" ng-class="{in: collapseIn, out: !collapseIn}">
+    <p ng-click='updateVisited(destination)' ng-repeat='destination in traveler.destinations' ng-class="{checked: destination.visited, 'disabled': !isCurrentTraveller(traveler)}">
+      <span class='checkbox' ng-model='destination.visited' ng-class="{checked: destination.visited}"></span>
+      {{destination.name}}
+      <span ng-if='isCurrentTraveller(traveler)' ng-click='removeDestination(destination)' class='remove-btn'></span>
+    </p>
+  </div>
+</div>

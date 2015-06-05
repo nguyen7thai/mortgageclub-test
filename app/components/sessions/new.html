@@ -1,0 +1,9 @@
+<div id='login'>
+  <h3>Traveler's name</h3>
+  <form ng-submit='create()'>
+    <p><input name='name' placeholder='Amos, Andy or Evie' type='text' ng-model="session.name"></p>
+    <div class='error'>{{ error }}</div>
+    <input type='submit' value='Enter'>
+  </form>
+</div>
+

@@ -1,0 +1,60 @@
+@import 'login';
+@import 'travelers';
+
+body {
+  margin: 0;
+  font-family: Amplitude;
+  position: absolute;
+}
+
+.header {
+  background: $dark-bg;
+  color: #fff;
+  height: 75px;
+  line-height: 75px;
+  font-size: 25px;
+  padding: 0 15px;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.container {
+  padding: 15px;
+}
+
+.error {
+  color: red;
+}
+
+.menu {
+  background: url('images/menu.png') no-repeat;
+  height: 40px;
+  width: 40px;
+  background-size: 30px auto;
+  display: inline-block;
+  float: right;
+  margin-top: 20px;
+}
+
+.menu-bar {
+  height: 100%;
+  h3 {
+    color: #fff;
+    margin: 0;
+    font-weight: normal;
+    font-size: 24px;
+    padding: 20px 0 25px 20px;
+    border-bottom: solid black 3px;
+    border-left: solid 1px #747070;
+  }
+
+  .menu-item {
+    border-bottom: solid black 2px;
+    color: #fff;
+    padding: 20px;
+  }
+}
+
+.ng-pageslide {
+  background: $dark-bg;
+}

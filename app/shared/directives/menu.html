@@ -1,0 +1,12 @@
+<span class='menu' ng-click='changeOpenState()'></span>
+<pageslide ps-open="opened" ps-push='true'>
+  <div class= 'menu-bar'>
+    <h3>Travel Notes</h3>
+    <div class='menu-item'>
+      {{ helloUser }}
+    </div>
+    <div class='menu-item' ng-click='logOut()' ng-if='userLogin'>
+      Logout
+    </div>
+  </div>
+</pageslide>

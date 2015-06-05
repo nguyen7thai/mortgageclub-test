@@ -1,0 +1,80 @@
+@import 'constant';
+
+#traveler-list {
+  .panel-heading {
+    background: $dark-bg;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 50px;
+    padding: 0;
+    border-radius: 0;
+    h4 {
+      line-height: 50px;
+      padding: 0 15px;
+      margin: 0;
+      font-weight: normal;
+    }
+  }
+
+  .panel-collapse {
+    overflow: hidden;
+    border: 1px solid #ddd;
+    -webkit-transition: max-height 0.5s;
+    -moz-transition: max-height 0.5s;
+    transition: max-height 0.5s;
+    &.in {
+      max-height: 0px;
+      .toggle-btn {
+
+      }
+    }
+
+    &.out {
+      max-height: 500px;
+    }
+
+    p {
+      line-height: 50px;
+      border-bottom: 1px solid #eee;
+      margin: 0;
+      position: relative;
+      padding: 0 20px;
+
+      &.checked {
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  .remove-btn {
+    float: right;
+    background: url('images/delete.png') no-repeat;
+    height: 30px;
+    width: 30px;
+    background-size: 100%;
+    line-height: 44px;
+    margin-top: 10px;
+  }
+
+  .checkbox {
+    position: relative;
+    margin-right: 10px;
+    content: '';
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    background-color: green;
+    position: relative;
+    top: 5px;
+    &.checked {
+      background-image: url('images/checked.png');
+      background-repeat: no-repeat;
+    }
+  }
+
+  .disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.3;
+  }
+}

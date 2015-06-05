@@ -1,20 +1,47 @@
 <!DOCTYPE html>
   <html lang="en" ng-app='mortGageClub'>
   <head>
-    <!-- bower:js -->
-    <script src="build/bower_components/jquery/jquery.js"></script>
-    <script src="build/bower_components/angular/angular.js"></script>
-    <script src="build/bower_components/angular-route/angular-route.js"></script>
-    <script src="build/bower_components/angular-resource/angular-resource.js"></script>
-    <script src="build/bower_components/angular-ui-router/angular-ui-router.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- build:css vendor.css -->
+    <!-- bower:css -->
     <!-- endbower -->
-    <script type="text/javascript" src="/build/production.js"></script>
+    <!-- endbuild -->
+    <!-- build:css(.) application.css -->
+    <link rel="stylesheet" type="text/css" href=".tmp/app/assets/css/application.css" />
+    <!-- endbuild -->
+
     <base href="/">
     <title>MortGageClub test</title>
   </head>
 
   <body>
-    <span class='reloadButton'>Reload</span>
-    <div ui-view></div>
+    <div class='header'>Travel Notes
+      <span class='menuButton'></span>
+    </div>
+    <div ui-view class='container'></div>
   </body>
+
+  <!-- build:js(.) vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/angular-pageslide-directive/dist/angular-pageslide-directive.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js(.) application.js -->
+  <script src="app/app.js"></script>
+
+  <script src="app/config/interceptors.js"></script>
+  <script src="app/config/routes.js"></script>
+  <script src="app/shared/directives/menuButton.js"></script>
+  <script src="app/shared/services/sessionService.js"></script>
+  <script src="app/components/sessions/sessionsController.js"></script>
+  <script src="app/components/sessions/sessionsResource.js"></script>
+  <script src="app/components/travelers/directives/travelerDropdown.js"></script>
+  <script src="app/components/travelers/travelersController.js"></script>
+  <script src="app/components/travelers/travelersResource.js"></script>
+  <!-- endbuild -->
 </html>
