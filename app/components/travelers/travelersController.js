@@ -1,6 +1,6 @@
 travelersModule.controller('travelersController',
   function($scope, travelersResource, SessionService, $filter) {
-    var currentTravelerId = SessionService.currentUser;
+    var currentTravelerId = SessionService.currentUser.id;
     travelersResource.query(function(data) {
       $scope.travelers = data;
       $scope.currentTraveler = $filter('filter')($scope.travelers, {id: currentTravelerId})[0];

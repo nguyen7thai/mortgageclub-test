@@ -8,7 +8,7 @@ mortGageClub.directive('menuButton', function(SessionService, $state, $rootScope
       var initValue = function() {
         if(SessionService.currentUser) {
           $scope.userLogin = true;
-          $scope.helloUser = 'Hello, ' + SessionService.userName;
+          $scope.helloUser = 'Hello, ' + SessionService.currentUser.name;
         } else {
           $scope.userLogin = false;
           $scope.helloUser = 'Please Login'
@@ -17,7 +17,6 @@ mortGageClub.directive('menuButton', function(SessionService, $state, $rootScope
       initValue();
       $scope.changeOpenState = function() {
         $scope.opened = !$scope.opened;
-        console.log($scope.opened)
       }
       $scope.logOut = function() {
         SessionService.logOut();
