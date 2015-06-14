@@ -6,10 +6,10 @@
     </h4>
   </div>
   <div class="panel-collapse" ng-class="{in: collapseIn, out: !collapseIn}">
-    <p ng-click='updateVisited(destination)' ng-repeat='destination in traveler.destinations' ng-class="{checked: destination.visited, 'disabled': !isCurrentTraveller(traveler)}">
+    <p ng-click='updateVisited(destination)' ng-repeat='destination in traveler.destinations' ng-class="{checked: destination.visited, 'disabled': !isCurrentTraveller(traveler), updating: destination.updating}">
       <span class='checkbox' ng-model='destination.visited' ng-class="{checked: destination.visited}"></span>
       {{destination.name}}
-      <span ng-if='isCurrentTraveller(traveler)' ng-click='removeDestination(destination)' class='remove-btn'></span>
+      <span ng-if='isCurrentTraveller(traveler)' ng-click='removeDestination(destination); $event.stopPropagation();' class='remove-btn'></span>
     </p>
   </div>
 </div>

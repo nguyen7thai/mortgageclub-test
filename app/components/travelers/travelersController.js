@@ -1,18 +1,33 @@
 travelersModule.controller('travelersController',
   function($scope, travelersResource, SessionService, $filter) {
     var currentTravelerId = SessionService.currentUser.id;
+    var updateDestinationList = function(updateMethod, target) {
+      var cloneList = [];
+      angular.copy($scope.currentTraveler.destinations, cloneList);
+      updateMethod(cloneList);
+      if(target) { target.updating = true; }
+
+      var error = function(data) {
+        if(target) { target.updating = false; }
+        $scope.error = 'Something went wrong with Api!!!';
+        console.log(data);
+      }
+
+      var success = function(data) {
+        if(target) { target.updating = false; }
+        $scope.error = '';
+        $scope.currentTraveler.destinations = data.destinations;
+        console.log(data);
+      }
+
+      var params = { destinations: cloneList };
+      travelersResource.save({id: $scope.currentTraveler.id}, params, success, error);
+    }
+
     travelersResource.query(function(data) {
       $scope.travelers = data;
       $scope.currentTraveler = $filter('filter')($scope.travelers, {id: currentTravelerId})[0];
-      $scope.$watch('currentTraveler.destinations', function(newValue, oldValue) {
-        if(newValue === oldValue){
-          return;
-        }
-        var params = { destinations: newValue };
-        travelersResource.save({id: $scope.currentTraveler.id}, params, function(data) {
-          console.log(data);
-        });
-      }, true);
+      var rollback = false;
     });
     $scope.newDestination = '';
 
@@ -23,7 +38,10 @@ travelersModule.controller('travelersController',
           visited: false
         }
         $scope.newDestination = '';
-        $scope.currentTraveler.destinations.push(destination);
+
+        updateDestinationList(function(list) {
+          list.push(destination);
+        });
       }
     }
 
@@ -33,11 +51,17 @@ travelersModule.controller('travelersController',
 
     $scope.removeDestination = function(destination) {
       var index = $scope.currentTraveler.destinations.indexOf(destination);
-      $scope.currentTraveler.destinations.splice(index, 1);
+
+      updateDestinationList(function(list) {
+        list.splice(index, 1);
+      }, destination);
     }
 
     $scope.updateVisited = function(destination) {
-      destination.visited = !destination.visited
+      updateDestinationList(function(list) {
+        var item = $filter('filter')(list, {name: destination.name})[0];
+        item.visited = !item.visited;
+      }, destination);
     }
   }
 );

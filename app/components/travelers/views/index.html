@@ -1,8 +1,9 @@
 <div id='traveler-list'>
+  <div class='error'>{{error}}</div>
   <traveler-dropdown ng-repeat='traveler in travelers'></traveler-dropdown>
   <form ng-submit='addDestination()'>
     <p>New Destination:</p>
-    <input type='text' ng-model="newDestination">
+    <input type='text' class='autocompleteInput' ng-model="newDestination">
     <input type='submit' value='Add New Destination' ng-class="{disabled: newDestination.length == 0}">
   </form>
 </div>
